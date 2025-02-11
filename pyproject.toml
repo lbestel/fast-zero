@@ -8,10 +8,23 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.12.*"
 fastapi = {extras = ["standard"], version = "^0.115.6"}
+sqlalchemy = "^2.0.36"
+pydantic-settings = "^2.7.1"
+alembic = "^1.14.0"
+pwdlib = {extras = ["argon2"], version = "^0.2.1"}
+python-multipart = "^0.0.20"
+pyjwt = "^2.10.1"
+pytz = "^2024.2"
+tzdata = "^2024.2"
+psycopg = {extras = ["binary"], version = "^3.2.4"}
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.8.4"
 taskipy = "^1.14.1"
+factory-boy = "^3.3.1"
+freezegun = "^1.5.1"
+testcontainers = "^4.9.1"
+toolong = "^1.5.0"
 
 [tool.poetry.group.pytest.dependencies]
 pytest-cov = "^6.0.0"
@@ -35,7 +48,7 @@ quote-style = 'single'
 [tool.taskipy.tasks]
 run = 'fastapi dev fast_zero/app.py'
 pre_test = 'task  lint'
-test = 'pytest -s -x --cov=fast_zero -vv'
+test = 'pytest --cov=fast_zero -vv'
 post_test = 'coverage html'
 lint = 'ruff check . --fix && ruff check . --diff'
 format = 'ruff check . --fix && ruff format .'
